@@ -1,0 +1,45 @@
+﻿apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+  namespace: default
+spec:
+  type: pubsub.azure.eventhubs
+  version: v1
+  metadata:
+  - name: connectionString
+    value: "<Your-Azure-Event-Hub-Connection-String>"
+  - name: eventHub
+    value: "<Your-Event-Hub-Name>"
+  - name: consumerGroup
+    value: "$Default"  # Default consumer group, or specify another
+  - name: storageAccountName
+    value: "<Your-Azure-Storage-Account-Name>"  # Used for checkpointing
+  - name: storageAccountKey
+    value: "<Your-Azure-Storage-Account-Key>"
+  - name: storageContainerName
+    value: "<Your-Storage-Container-Name>"
+
+
+
+#     apiVersion: dapr.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: pubsub
+#   namespace: default
+# spec:
+#   type: pubsub.azure.eventhubs
+#   version: v1
+#   metadata:
+#   - name: connectionString
+#     value: "Endpoint=sb://my-eventhub-namespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXX"
+#   - name: eventHub
+#     value: "my-event-hub"
+#   - name: consumerGroup
+#     value: "$Default"
+#   - name: storageAccountName
+#     value: "mystorageaccount"
+#   - name: storageAccountKey
+#     value: "XXXXX"
+#   - name: storageContainerName
+#     value: "checkpoint-container"
